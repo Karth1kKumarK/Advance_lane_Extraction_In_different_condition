@@ -4,7 +4,7 @@
  <title>Karth1kKumarK.github.io</title>
  <link href="http://localhost:4000/Advance_lane_extraction_in_different_illumination/atom.xml" rel="self"/>
  <link href="http://localhost:4000/Advance_lane_extraction_in_different_illumination/"/>
- <updated>2018-09-07T22:36:19+05:30</updated>
+ <updated>2018-09-07T22:51:14+05:30</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Karthik Kumar K</name>
@@ -19,16 +19,9 @@
    <id>http://localhost:4000/Advance_lane_extraction_in_different_illumination/2018/09/05/advance-lane</id>
    <content type="html">&lt;p&gt;The first post &lt;a href=&quot;https://karth1kkumark.github.io/Advance_lane_detection/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.Describes the lane detection using color mask that has major drawback.The noir Rpi camera has no ir filter,Therefore this greatly affects the color perception of the image based on illumination condition,This alters the color range of lane pixels,So the challenge was to develop a technique which is impervious to these drawbacks.
 This post describes the methodology to achieve lane extraction in various illumination condition with considerable accuracy.&lt;/p&gt;
-&lt;table style=&quot;width:100%; border:0px;&quot;&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Track&lt;/th&gt;
-    &lt;th&gt;Platform&lt;/th&gt; 
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/IMG_20180824_170612.jpg&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/IMG_0028.jpg&quot; width=&quot;580px&quot; /&gt;&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;
+
+&lt;p&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/IMG_0028.jpg&quot; width=&quot;380px&quot; /&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;the-hardware-utlilized&quot;&gt;The hardware Utlilized&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;RC car&lt;/li&gt;
@@ -380,11 +373,9 @@ ROI function which crops the image leaving out only lane pixel. The ROI image is
 
 &lt;h3 id=&quot;result&quot;&gt;Result&lt;/h3&gt;
 &lt;p&gt;The results obtained from dynamic thresholding in both day light and artifical illumination sencerio&lt;/p&gt;
-&lt;iframe width=&quot;450&quot; height=&quot;405&quot; src=&quot;https://youtu.be/U2EiAOr_Rcw&quot; allowfullscreen=&quot;allowfullscreen&quot; mozallowfullscreen=&quot;mozallowfullscreen&quot; msallowfullscreen=&quot;msallowfullscreen&quot; oallowfullscreen=&quot;oallowfullscreen&quot; webkitallowfullscreen=&quot;webkitallowfullscreen&quot;&gt;
-&lt;/iframe&gt;
+&lt;iframe width=&quot;817&quot; height=&quot;297&quot; src=&quot;https://www.youtube.com/embed/qstuhDxod5s&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
-&lt;iframe width=&quot;450&quot; height=&quot;405&quot; src=&quot;https://youtu.be/3ekDr2XvUK8&quot; allowfullscreen=&quot;allowfullscreen&quot; mozallowfullscreen=&quot;mozallowfullscreen&quot; msallowfullscreen=&quot;msallowfullscreen&quot; oallowfullscreen=&quot;oallowfullscreen&quot; webkitallowfullscreen=&quot;webkitallowfullscreen&quot;&gt;
-&lt;/iframe&gt;
+&lt;iframe width=&quot;817&quot; height=&quot;297&quot; src=&quot;https://www.youtube.com/embed/3ekDr2XvUK8&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 </content>
  </entry>
  

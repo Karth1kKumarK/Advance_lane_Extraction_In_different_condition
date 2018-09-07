@@ -4,16 +4,9 @@ title : Extraction and Detection of Lanes in different illumination Condition
 ---
 The first post <a href="https://karth1kkumark.github.io/Advance_lane_detection/" target="_blank">here</a>.Describes the lane detection using color mask that has major drawback.The noir Rpi camera has no ir filter,Therefore this greatly affects the color perception of the image based on illumination condition,This alters the color range of lane pixels,So the challenge was to develop a technique which is impervious to these drawbacks.
 This post describes the methodology to achieve lane extraction in various illumination condition with considerable accuracy.
-<table style="width:100%; border:0px;">
-  <tr>
-    <th>Track</th>
-    <th>Platform</th> 
-  </tr>
-  <tr>
-    <td><img src="{{ site.baseurl }}/assets/images/IMG_20180824_170612.jpg" width="480px"></td>
-    <td><img src="{{ site.baseurl }}/assets/images/IMG_0028.jpg" width="580px"></td>
-  </tr>
-</table>
+
+<img src="{{ site.baseurl }}/assets/images/IMG_0028.jpg" width="380px">
+
 ### The hardware Utlilized
 - RC car
 - RPI NOIR camera
@@ -371,20 +364,6 @@ def plain_lane(undist, warped, M, left_fitx, right_fitx, ploty, plot=False):
 
 ### Result
  The results obtained from dynamic thresholding in both day light and artifical illumination sencerio 
-<iframe width="450" height="405" 
-src="https://youtu.be/U2EiAOr_Rcw" 
-        allowfullscreen="allowfullscreen"
-        mozallowfullscreen="mozallowfullscreen" 
-        msallowfullscreen="msallowfullscreen" 
-        oallowfullscreen="oallowfullscreen" 
-        webkitallowfullscreen="webkitallowfullscreen">
-</iframe>
+ <iframe width="817" height="297" src="https://www.youtube.com/embed/qstuhDxod5s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-<iframe width="450" height="405" 
-src="https://youtu.be/3ekDr2XvUK8" 
-        allowfullscreen="allowfullscreen"
-        mozallowfullscreen="mozallowfullscreen" 
-        msallowfullscreen="msallowfullscreen" 
-        oallowfullscreen="oallowfullscreen" 
-        webkitallowfullscreen="webkitallowfullscreen">
-</iframe>
+<iframe width="817" height="297" src="https://www.youtube.com/embed/3ekDr2XvUK8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
