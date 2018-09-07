@@ -5,7 +5,7 @@ title : Extraction and Detection of Lanes in different illumination Condition
 The first post <a href="https://karth1kkumark.github.io/Advance_lane_detection/" target="_blank">here</a>.Describes the lane detection using color mask that has major drawback.The noir Rpi camera has no ir filter,Therefore this greatly affects the color perception of the image based on illumination condition,This alters the color range of lane pixels,So the challenge was to develop a technique which is impervious to these drawbacks.
 This post describes the methodology to achieve lane extraction in various illumination condition with considerable accuracy.
 
-<img src="{{ site.baseurl }}/assets/images/IMG_0028.jpg" width="380px">
+<img src="{{ site.baseurl }}/assets/images/IMG_0028.jpg" width="300px">
 
 ### The hardware Utlilized
 - RC car
