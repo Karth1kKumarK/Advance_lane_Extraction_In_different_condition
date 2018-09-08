@@ -360,3 +360,12 @@ def plain_lane(undist, warped, M, left_fitx, right_fitx, ploty, plot=False):
  <iframe width="817" height="297" src="https://www.youtube.com/embed/qstuhDxod5s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 <iframe width="817" height="297" src="https://www.youtube.com/embed/3ekDr2XvUK8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+### Resources:
+Source code:<a
+href="https://github.com/Karth1kKumarK/Lane_detection_code" target="_blank">https://github.com/Karth1kKumarK/Lane_detection_code</a>
+
+Reference Paper:
+<a
+href="https://ieeexplore.ieee.org/abstract/document/6889285/" target="_blank">https://ieeexplore.ieee.org/abstract/document/6889285/</a>
+

@@ -4,7 +4,7 @@
  <title>Karth1kKumarK.github.io</title>
  <link href="http://localhost:4000/Advance_lane_Extraction_In_different_condition/atom.xml" rel="self"/>
  <link href="http://localhost:4000/Advance_lane_Extraction_In_different_condition/"/>
- <updated>2018-09-08T09:30:31+05:30</updated>
+ <updated>2018-09-08T17:33:46+05:30</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Karthik Kumar K</name>
@@ -369,6 +369,13 @@
 &lt;iframe width=&quot;817&quot; height=&quot;297&quot; src=&quot;https://www.youtube.com/embed/qstuhDxod5s&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
 &lt;iframe width=&quot;817&quot; height=&quot;297&quot; src=&quot;https://www.youtube.com/embed/3ekDr2XvUK8&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h3 id=&quot;resources&quot;&gt;Resources:&lt;/h3&gt;
+&lt;p&gt;Source code:&lt;a href=&quot;https://github.com/Karth1kKumarK/Lane_detection_code&quot; target=&quot;_blank&quot;&gt;https://github.com/Karth1kKumarK/Lane_detection_code&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Reference Paper:
+&lt;a href=&quot;https://ieeexplore.ieee.org/abstract/document/6889285/&quot; target=&quot;_blank&quot;&gt;https://ieeexplore.ieee.org/abstract/document/6889285/&lt;/a&gt;&lt;/p&gt;
+
 </content>
  </entry>
  
