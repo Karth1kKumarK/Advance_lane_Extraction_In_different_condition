@@ -2,9 +2,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Karth1kKumarK.github.io</title>
- <link href="http://localhost:4000/Advance_lane_extraction_in_different_illumination/atom.xml" rel="self"/>
- <link href="http://localhost:4000/Advance_lane_extraction_in_different_illumination/"/>
- <updated>2018-09-07T22:57:53+05:30</updated>
+ <link href="http://localhost:4000/Advance_lane_Extraction_In_different_condition/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/Advance_lane_Extraction_In_different_condition/"/>
+ <updated>2018-09-08T09:30:31+05:30</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Karthik Kumar K</name>
@@ -16,11 +16,10 @@
    <title>Extraction and Detection of Lanes in different illumination Condition</title>
    <link href="http://localhost:4000/2018/09/05/advance-lane.html"/>
    <updated>2018-09-05T00:00:00+05:30</updated>
-   <id>http://localhost:4000/Advance_lane_extraction_in_different_illumination/2018/09/05/advance-lane</id>
-   <content type="html">&lt;p&gt;The first post &lt;a href=&quot;https://karth1kkumark.github.io/Advance_lane_detection/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.Describes the lane detection using color mask that has major drawback.The noir Rpi camera has no ir filter,Therefore this greatly affects the color perception of the image based on illumination condition,This alters the color range of lane pixels,So the challenge was to develop a technique which is impervious to these drawbacks.
-This post describes the methodology to achieve lane extraction in various illumination condition with considerable accuracy.&lt;/p&gt;
+   <id>http://localhost:4000/Advance_lane_Extraction_In_different_condition/2018/09/05/advance-lane</id>
+   <content type="html">&lt;p&gt;The first post &lt;a href=&quot;https://karth1kkumark.github.io/Advance_lane_detection/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.Describes the lane detection using a color mask that has a major drawback. The Rpi camera that I am using has no IR filter, Therefore this greatly affects the color perception of the image based on illumination condition, This alters the color range of lane pixels, So the challenge was to develop a technique which is impervious to these drawbacks. This post describes the methodology to achieve lane extraction in various illumination condition with considerable accuracy.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/IMG_0028.jpg&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/Advance_lane_Extraction_In_different_condition/assets/images/IMG_0028.jpg&quot; width=&quot;300px&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;the-hardware-utlilized&quot;&gt;The hardware Utlilized&lt;/h3&gt;
 &lt;ul&gt;
@@ -32,9 +31,7 @@ This post describes the methodology to achieve lane extraction in various illumi
 
 &lt;h3 id=&quot;streaming-images-from-rpi-to-laptop-through-ros&quot;&gt;Streaming Images from Rpi to Laptop Through ROS&lt;/h3&gt;
 
-&lt;p&gt;Ros has built in packages for image streaming and control of robot,which we will be using in the future.I have installed ubuntu mate flavour of Ubiquity robotics available &lt;a href=&quot;https://downloads.ubiquityrobotics.com/pi.html&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;, which has ros pre installed. The instruction for compiling and running raspicam_node is  &lt;a href=&quot;https://github.com/UbiquityRobotics/raspicam_node&quot; target=&quot;_blank&quot;&gt;available here.&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The Launch file for obtaining 640 X 480 stream&lt;/p&gt;
+&lt;p&gt;Ros has built-in packages for image streaming and control of a robot, which we will be using in the future. I have installed ubuntu mate flavor of Ubiquity robotics available  &lt;a href=&quot;https://downloads.ubiquityrobotics.com/pi.html&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;, which has ros pre-installed. The instruction for compiling and running raspicam_node is available &lt;a href=&quot;https://github.com/UbiquityRobotics/raspicam_node&quot; target=&quot;_blank&quot;&gt;available here.&lt;/a&gt;&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;launch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;raspicam_node&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pkg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;raspicam_node&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;raspicam_node&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;screen&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
@@ -50,18 +47,18 @@ This post describes the methodology to achieve lane extraction in various illumi
 &lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;launch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;The image streamed by raspicam_node is in compressed format.Hence rosrun the following to decompress and publish the image  on  &lt;strong&gt;/raspicam_node/image&lt;/strong&gt; topic&lt;/p&gt;
+&lt;p&gt;The image streamed by raspicam_node is in a compressed format. Hence rosrun the following to decompress and publish the image  on  &lt;strong&gt;/raspicam_node/image&lt;/strong&gt; topic&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;rosrun&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;image_transport&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;republish&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;compressed&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raspicam_node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;raspicam_node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;The image being published  on  the  &lt;strong&gt;/raspicam_node/image&lt;/strong&gt; topic is of type sensor_msgs/Image.This need to be converted into opencv format for further operation.&lt;/p&gt;
+&lt;p&gt;The image is published  on  the  &lt;strong&gt;/raspicam_node/image&lt;/strong&gt; topic is of type sensor_msgs/Image. This need to be converted into opencv format for further operation.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;image_sub&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rospy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Subscriber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/raspicam_node/image&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;cv_image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bridge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imgmsg_to_cv2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;bgr8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;preprocess-for-thresholding&quot;&gt;Preprocess for thresholding&lt;/h3&gt;
-&lt;p&gt;The First step in process of extraction of lane pixel is to undistort the image.&lt;/p&gt;
+&lt;p&gt;The First step in the process of extraction of lane pixel is to undistort the image&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;undistorth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mtx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#function for un distorting the image wrt to camera parameters &lt;/span&gt;
                              &lt;span class=&quot;c&quot;&gt;#obtained from camera calibration&lt;/span&gt;
@@ -74,9 +71,9 @@ This post describes the methodology to achieve lane extraction in various illumi
         &lt;span class=&quot;n&quot;&gt;dst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dst&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Camera intrinsic matrix and distortion co efficient are passed as arguments along with the image.&lt;/p&gt;
+&lt;p&gt;Camera intrinsic matrix and distortion coefficient are passed as arguments  with the image.&lt;/p&gt;
 
-&lt;p&gt;In order to increase the Contrast of the image,Adaptive histogram equalization is applied&lt;/p&gt;
+&lt;p&gt;In order to increase the contrast of the image, Adaptive histogram equalization is applied&lt;/p&gt;
 
 &lt;table style=&quot;width:100%; border:0px;&quot;&gt;
   &lt;tr&gt;
@@ -84,8 +81,8 @@ This post describes the methodology to achieve lane extraction in various illumi
     &lt;th&gt;Enhanced image&lt;/th&gt; 
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/Undistort.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/Enhancement_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;/Advance_lane_Extraction_In_different_condition/assets/images/Undistort.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;/Advance_lane_Extraction_In_different_condition/assets/images/Enhancement_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
 &lt;div class=&quot;code-block&quot;&gt; 
@@ -119,16 +116,15 @@ This post describes the methodology to achieve lane extraction in various illumi
 
 &lt;/div&gt;
 
-&lt;p&gt;Contrast enhanced image is converted to &lt;a href=&quot;https://en.wikipedia.org/wiki/CIELAB_color_space&quot; target=&quot;_blank&quot;&gt;CIELAB color space&lt;/a&gt;
-The image is split into corresponding channel(L* for the lightness and a* and b* for the green–red and blue–yellow color components).As the color of the track falls in to blue-yellow,We choose b channel image(A) and apply &lt;strong&gt;bitwise_not&lt;/strong&gt; operation to obtained the inverse image(B).Now we subtract b channel image(A) from bitnot image to obtain difference image C,Only those pixel which undergo change of more then 150 pixel value is retained .rest of the pixels are set to 0.The difference image(C) is element wise multiplied with b channel image(A),This amplifies the pixel value of pixels which undergoes max change.&lt;/p&gt;
+&lt;p&gt;The contrast-enhanced image is converted to &lt;a href=&quot;https://en.wikipedia.org/wiki/CIELAB_color_space&quot; target=&quot;_blank&quot;&gt;CIELAB color space.&lt;/a&gt; The image is split into the corresponding channel(L* for the lightness and a* and b* for the green–red and blue-yellow color components). As the color of the track falls into blue-yellow, We choose b channel image(A) and apply the &lt;strong&gt;bitwise_not&lt;/strong&gt; operation to obtain the inverse image(B). Now we subtract b channel image(A) from bit not image to obtain difference image C, Only those pixel which undergoes a change of more than 150-pixel value is retained .rest of the pixels are set to 0. The difference image(C) is element-wise multiplied with b channel image(A), This amplifies the pixel value of pixels which undergoes max change.&lt;/p&gt;
 &lt;table style=&quot;width:100%; border:0px;&quot;&gt;
   &lt;tr&gt;
     &lt;th&gt;b channel image&lt;/th&gt;
     &lt;th&gt;Bitnot image&lt;/th&gt; 
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/B channel_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/Bitnot_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;/Advance_lane_Extraction_In_different_condition/assets/images/B channel_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;/Advance_lane_Extraction_In_different_condition/assets/images/Bitnot_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
 
@@ -138,8 +134,8 @@ The image is split into corresponding channel(L* for the lightness and a* and b*
     &lt;th&gt;Element wise multipled image&lt;/th&gt; 
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/Diff_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/multipy_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;/Advance_lane_Extraction_In_different_condition/assets/images/Diff_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;/Advance_lane_Extraction_In_different_condition/assets/images/multipy_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
 
@@ -152,10 +148,8 @@ The image is split into corresponding channel(L* for the lightness and a* and b*
     &lt;span class=&quot;n&quot;&gt;multipyimage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;multipyimage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;110&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;dynamic-thresholding&quot;&gt;Dynamic Thresholding&lt;/h3&gt;
-&lt;p&gt;The implementation is inspired by this &lt;a href=&quot;https://ieeexplore.ieee.org/document/6889285/&quot; target=&quot;_blank&quot;&gt;paper.&lt;/a&gt;
-The image obtained from element wise multiplication is applied dynamic thresholding to extract Lane pixel.Dynamic thresholding assumes that a vehicle runs in the  middle of lanes.
-The image is divided in  half along  the width resulting in Dl(left half) and DR(right half)
-For  both Dl and DR are  scanned along the  rows and max value in each row  is obtained along with its position in the Row.For Dl the positional max  value is selected as this resides closer to middle of  the lane,similarly For DR the positional  min value is selected.&lt;/p&gt;
+
+&lt;p&gt;The implementation is inspired by this &lt;a href=&quot;https://ieeexplore.ieee.org/document/6889285/&quot; target=&quot;_blank&quot;&gt;paper.&lt;/a&gt; The image obtained from element-wise multiplication is applied dynamic thresholding to extract Lane pixel. Dynamic thresholding assumes that a vehicle runs in the middle of lanes. The image is divided in half along the width resulting in Dl(left half) and DR(right half) For both Dl and DR are scanned along the rows and max value in each row is obtained along with its position in the Row. For Dl the positional max value is selected as this resides closer to the middle of the lane, similarly, For DR the positional min value is selected.&lt;/p&gt;
 
 &lt;table style=&quot;width:100%; border:0px;&quot;&gt;
   &lt;tr&gt;
@@ -163,43 +157,42 @@ For  both Dl and DR are  scanned along the  rows and max value in each row  is o
     &lt;th&gt;Dynamic Thresholding&lt;/th&gt; 
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/multipy_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/Dynamic thres_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;/Advance_lane_Extraction_In_different_condition/assets/images/multipy_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;/Advance_lane_Extraction_In_different_condition/assets/images/Dynamic thres_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
 
 &lt;div class=&quot;code-block&quot;&gt; 
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dynamicrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;imagecopy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iW&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;imagecopy1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iW&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;imagecopy2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;maxv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imagecopy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,:])&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imagecopy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,:])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Dl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iW&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;DR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iW&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;imagecopy2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;uint8&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;maxv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,:])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,:])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;imagecopy2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imagecopy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;imagecopy2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
         
-        &lt;span class=&quot;n&quot;&gt;maxvR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imagecopy1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,:])&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imagecopy1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,:])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxvR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;maxvR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,:])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,:])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxvR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;imagecopy2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iW&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imagecopy1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imagecopy&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+            &lt;span class=&quot;n&quot;&gt;imagecopy2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iW&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imagecopy2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;/div&gt;
 
 &lt;h3 id=&quot;detect-lane-pixels-and-fit-to-find-the-lane-boundary&quot;&gt;Detect lane pixels and fit to find the lane boundary&lt;/h3&gt;
-&lt;p&gt;The Image after dynamic thresholding is passed as argument to
-ROI function which crops the image leaving out only lane pixel. The ROI image is then  perspective transformed to obtain Bird eye view.Then  histogram of the lower half of the image is used to get the range of position of pixels in the image. Then dividing the entire image into n(current n=9) windows. Using the function Yourimage.nonzero() to get x ,y co ordinates of non zero pixels is determined. Now x and y co ordinate of right and left lane pixels are determined.we use Curve fitting to obtain the polynomial.&lt;/p&gt;
+&lt;p&gt;The Image after dynamic thresholding is passed as an argument to ROI function which crops the image leaving out only lane pixel. The ROI image is then perspectively transformed to obtain Bird eye view. The histogram of the lower half of the image is used to get the range of the position of pixels in the image. Then dividing the entire image into n(current n=9) windows. Using the function Your image.nonzero() to get x, y coordinates of non zero pixels is determined. Now x and y coordinate of right and left lane pixels are determined.we use Curve fitting to obtain the polynomial.&lt;/p&gt;
 &lt;table style=&quot;width:100%; border:0px;&quot;&gt;
   &lt;tr&gt;
     &lt;th&gt;ROI image&lt;/th&gt;
     &lt;th&gt;Bird Eye View&lt;/th&gt; 
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/ROI_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;img src=&quot;/Advance_lane_extraction_in_different_illumination/assets/images/BIE_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;/Advance_lane_Extraction_In_different_condition/assets/images/ROI_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;/Advance_lane_Extraction_In_different_condition/assets/images/BIE_screenshot_07.09.2018.png&quot; width=&quot;480px&quot; /&gt;&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
 &lt;div class=&quot;code-block&quot;&gt; 
@@ -326,7 +319,7 @@ ROI function which crops the image leaving out only lane pixel. The ROI image is
 &lt;/div&gt;
 
 &lt;h3 id=&quot;warp-the-lane-boundary-back-on-to-original-image&quot;&gt;Warp the lane boundary back on to original image&lt;/h3&gt;
-&lt;p&gt;Now that lane curves are detected we will use cv2.fillPoly(color_warp, np.int_([pts]), (0,255,0)) to fill image along curve. After this step,Image is inverse perspective transformed into original view plane and combined with the original undistorted image.&lt;/p&gt;
+&lt;p&gt;Now that lane curves are detected we will use cv2.fillPoly(color_warp, np.int_([pts]), (0,255,0)) to fill image along curve. After this step, Image is inverse perspective transformed into original view plane and combined with the original undistorted image.&lt;/p&gt;
 
 &lt;div class=&quot;code-block&quot;&gt;
 
@@ -372,7 +365,7 @@ ROI function which crops the image leaving out only lane pixel. The ROI image is
 &lt;/div&gt;
 
 &lt;h3 id=&quot;result&quot;&gt;Result&lt;/h3&gt;
-&lt;p&gt;The results obtained from dynamic thresholding in both day light and artifical illumination sencerio&lt;/p&gt;
+&lt;p&gt;The results obtained from dynamic thresholding in both daylight and artificial illumination scenario.&lt;/p&gt;
 &lt;iframe width=&quot;817&quot; height=&quot;297&quot; src=&quot;https://www.youtube.com/embed/qstuhDxod5s&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
 &lt;iframe width=&quot;817&quot; height=&quot;297&quot; src=&quot;https://www.youtube.com/embed/3ekDr2XvUK8&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;

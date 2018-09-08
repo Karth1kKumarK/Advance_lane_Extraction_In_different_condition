@@ -2,8 +2,7 @@
 layout: post
 title : Extraction and Detection of Lanes in different illumination Condition
 ---
-The first post <a href="https://karth1kkumark.github.io/Advance_lane_detection/" target="_blank">here</a>.Describes the lane detection using color mask that has major drawback.The noir Rpi camera has no ir filter,Therefore this greatly affects the color perception of the image based on illumination condition,This alters the color range of lane pixels,So the challenge was to develop a technique which is impervious to these drawbacks.
-This post describes the methodology to achieve lane extraction in various illumination condition with considerable accuracy.
+The first post <a href="https://karth1kkumark.github.io/Advance_lane_detection/" target="_blank">here</a>.Describes the lane detection using a color mask that has a major drawback. The Rpi camera that I am using has no IR filter, Therefore this greatly affects the color perception of the image based on illumination condition, This alters the color range of lane pixels, So the challenge was to develop a technique which is impervious to these drawbacks. This post describes the methodology to achieve lane extraction in various illumination condition with considerable accuracy.
 
 <img src="{{ site.baseurl }}/assets/images/IMG_0028.jpg" width="300px">
 
@@ -13,12 +12,9 @@ This post describes the methodology to achieve lane extraction in various illumi
 - Raspiberry PI
 - L298N motor driver
 
-
 ### Streaming Images from Rpi to Laptop Through ROS
 
-Ros has built in packages for image streaming and control of robot,which we will be using in the future.I have installed ubuntu mate flavour of Ubiquity robotics available <a href="https://downloads.ubiquityrobotics.com/pi.html" target="_blank">here</a>, which has ros pre installed. The instruction for compiling and running raspicam_node is  <a href="https://github.com/UbiquityRobotics/raspicam_node" target="_blank">available here.</a>
-
-The Launch file for obtaining 640 X 480 stream
+Ros has built-in packages for image streaming and control of a robot, which we will be using in the future. I have installed ubuntu mate flavor of Ubiquity robotics available  <a href="https://downloads.ubiquityrobotics.com/pi.html" target="_blank">here</a>, which has ros pre-installed. The instruction for compiling and running raspicam_node is available <a href="https://github.com/UbiquityRobotics/raspicam_node" target="_blank">available here.</a>
 
 {% highlight python %}
 <launch>
@@ -36,19 +32,19 @@ The Launch file for obtaining 640 X 480 stream
 </launch>
 {% endhighlight %}
 
-The image streamed by raspicam_node is in compressed format.Hence rosrun the following to decompress and publish the image  on  __/raspicam_node/image__ topic
+The image streamed by raspicam_node is in a compressed format. Hence rosrun the following to decompress and publish the image  on  __/raspicam_node/image__ topic
 {% highlight python %}
 rosrun image_transport republish compressed in:=/raspicam_node/image raw out:=/raspicam_node/image
 {% endhighlight %}
 
-The image being published  on  the  __/raspicam_node/image__ topic is of type sensor_msgs/Image.This need to be converted into opencv format for further operation.
+The image is published  on  the  __/raspicam_node/image__ topic is of type sensor_msgs/Image. This need to be converted into opencv format for further operation.
 {% highlight python %}
 image_sub = rospy.Subscriber("/raspicam_node/image",Image,callback)
 def callback(data):
     cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
 {% endhighlight %}
 ### Preprocess for thresholding 
-The First step in process of extraction of lane pixel is to undistort the image.
+The First step in the process of extraction of lane pixel is to undistort the image
 {% highlight python %}
 def undistorth(img,mtx,dist):#function for un distorting the image wrt to camera parameters 
                              #obtained from camera calibration
@@ -62,9 +58,9 @@ def undistorth(img,mtx,dist):#function for un distorting the image wrt to camera
         return dst
 {% endhighlight %}
 
-Camera intrinsic matrix and distortion co efficient are passed as arguments along with the image.
+Camera intrinsic matrix and distortion coefficient are passed as arguments  with the image.
 
-In order to increase the Contrast of the image,Adaptive histogram equalization is applied
+In order to increase the contrast of the image, Adaptive histogram equalization is applied
 
 <table style="width:100%; border:0px;">
   <tr>
@@ -107,8 +103,8 @@ def enhancement(img):
 {% endhighlight %}
 </div>
 
-Contrast enhanced image is converted to <a href="https://en.wikipedia.org/wiki/CIELAB_color_space" target="_blank">CIELAB color space</a>
-The image is split into corresponding channel(L* for the lightness and a* and b* for the green–red and blue–yellow color components).As the color of the track falls in to blue-yellow,We choose b channel image(A) and apply __bitwise_not__ operation to obtained the inverse image(B).Now we subtract b channel image(A) from bitnot image to obtain difference image C,Only those pixel which undergo change of more then 150 pixel value is retained .rest of the pixels are set to 0.The difference image(C) is element wise multiplied with b channel image(A),This amplifies the pixel value of pixels which undergoes max change.
+
+The contrast-enhanced image is converted to <a href="https://en.wikipedia.org/wiki/CIELAB_color_space" target="_blank">CIELAB color space.</a> The image is split into the corresponding channel(L* for the lightness and a* and b* for the green–red and blue-yellow color components). As the color of the track falls into blue-yellow, We choose b channel image(A) and apply the __bitwise_not__ operation to obtain the inverse image(B). Now we subtract b channel image(A) from bit not image to obtain difference image C, Only those pixel which undergoes a change of more than 150-pixel value is retained .rest of the pixels are set to 0. The difference image(C) is element-wise multiplied with b channel image(A), This amplifies the pixel value of pixels which undergoes max change.
 <table style="width:100%; border:0px;">
   <tr>
     <th>b channel image</th>
@@ -143,10 +139,8 @@ The image is split into corresponding channel(L* for the lightness and a* and b*
 
 
 ### Dynamic Thresholding
-The implementation is inspired by this <a href="https://ieeexplore.ieee.org/document/6889285/" target="_blank">paper.</a>
-The image obtained from element wise multiplication is applied dynamic thresholding to extract Lane pixel.Dynamic thresholding assumes that a vehicle runs in the  middle of lanes.
-The image is divided in  half along  the width resulting in Dl(left half) and DR(right half)
-For  both Dl and DR are  scanned along the  rows and max value in each row  is obtained along with its position in the Row.For Dl the positional max  value is selected as this resides closer to middle of  the lane,similarly For DR the positional  min value is selected.
+
+The implementation is inspired by this <a href="https://ieeexplore.ieee.org/document/6889285/" target="_blank">paper.</a> The image obtained from element-wise multiplication is applied dynamic thresholding to extract Lane pixel. Dynamic thresholding assumes that a vehicle runs in the middle of lanes. The image is divided in half along the width resulting in Dl(left half) and DR(right half) For both Dl and DR are scanned along the rows and max value in each row is obtained along with its position in the Row. For Dl the positional max value is selected as this resides closer to the middle of the lane, similarly, For DR the positional min value is selected.
 
 <table style="width:100%; border:0px;">
   <tr>
@@ -162,27 +156,26 @@ For  both Dl and DR are  scanned along the  rows and max value in each row  is o
 <div class="code-block"> 
 {% highlight python %}
    def dynamicrange(image):
-    (iH, iW) = image.shape[:2]
-    imagecopy=image[:,:iW/2]
-    imagecopy1=image[:,iW/2:]
-    imagecopy2=np.zeros(shape=(iH,iW))
-    for k in np.arange(0,iH):
-        maxv=np.max(imagecopy[k,:])
-        c=[i for i, j in enumerate(imagecopy[k,:]) if j == maxv]
+        (iH, iW) = image.shape[:2]
+        Dl=image[:,:iW/2]
+        DR=image[:,iW/2:]
+        imagecopy2=np.zeros((iH,iW),dtype="uint8")
+        for k in np.arange(0,iH):
+        maxv=np.max(Dl[k,:])
+        c=[i for i, j in enumerate(Dl[k,:]) if j == maxv]
         if(len(c)):
-            imagecopy2[k][c[len(c)-1]]=imagecopy[k,c[len(c)-1]]
+            imagecopy2[k][c[len(c)-1]]=Dl[k,c[len(c)-1]]
         
-        maxvR=np.max(imagecopy1[k,:])
-        d=[m for m, n in enumerate(imagecopy1[k,:]) if n == maxvR]
+        maxvR=np.max(DR[k,:])
+        d=[m for m, n in enumerate(DR[k,:]) if n == maxvR]
         if(len(d)):
-            imagecopy2[k][iW/2+d[0]]=imagecopy1[k,d[0]]
-    return imagecopy
+            imagecopy2[k][iW/2+d[0]]=DR[k,d[0]]
+        return imagecopy2
 {% endhighlight %}
 </div>
 
 ### Detect lane pixels and fit to find the lane boundary
-The Image after dynamic thresholding is passed as argument to
-ROI function which crops the image leaving out only lane pixel. The ROI image is then  perspective transformed to obtain Bird eye view.Then  histogram of the lower half of the image is used to get the range of position of pixels in the image. Then dividing the entire image into n(current n=9) windows. Using the function Yourimage.nonzero() to get x ,y co ordinates of non zero pixels is determined. Now x and y co ordinate of right and left lane pixels are determined.we use Curve fitting to obtain the polynomial.
+The Image after dynamic thresholding is passed as an argument to ROI function which crops the image leaving out only lane pixel. The ROI image is then perspectively transformed to obtain Bird eye view. The histogram of the lower half of the image is used to get the range of the position of pixels in the image. Then dividing the entire image into n(current n=9) windows. Using the function Your image.nonzero() to get x, y coordinates of non zero pixels is determined. Now x and y coordinate of right and left lane pixels are determined.we use Curve fitting to obtain the polynomial.
 <table style="width:100%; border:0px;">
   <tr>
     <th>ROI image</th>
@@ -317,7 +310,7 @@ def poly_fit(leftx, lefty, rightx, righty, left_lane_inds, right_lane_inds, bina
 </div>
 
 ### Warp the lane boundary back on to original image
-Now that lane curves are detected we will use cv2.fillPoly(color_warp, np.int_([pts]), (0,255,0)) to fill image along curve. After this step,Image is inverse perspective transformed into original view plane and combined with the original undistorted image.
+Now that lane curves are detected we will use cv2.fillPoly(color_warp, np.int_([pts]), (0,255,0)) to fill image along curve. After this step, Image is inverse perspective transformed into original view plane and combined with the original undistorted image.
 
 <div class="code-block">
 {% highlight python %}
@@ -363,7 +356,7 @@ def plain_lane(undist, warped, M, left_fitx, right_fitx, ploty, plot=False):
 </div>
 
 ### Result
- The results obtained from dynamic thresholding in both day light and artifical illumination sencerio 
+ The results obtained from dynamic thresholding in both daylight and artificial illumination scenario.
  <iframe width="817" height="297" src="https://www.youtube.com/embed/qstuhDxod5s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 <iframe width="817" height="297" src="https://www.youtube.com/embed/3ekDr2XvUK8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
