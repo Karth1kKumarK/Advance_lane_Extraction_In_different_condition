@@ -104,7 +104,7 @@ def enhancement(img):
 </div>
 
 
-The contrast-enhanced image is converted to <a href="https://en.wikipedia.org/wiki/CIELAB_color_space" target="_blank">CIELAB color space.</a> The image is split into the corresponding channel(L* for the lightness and a* and b* for the green–red and blue-yellow color components). As the color of the track falls into blue-yellow, We choose b channel image(A) and apply the __bitwise_not__ operation to obtain the inverse image(B). Now we subtract b channel image(A) from bit not image to obtain difference image C, Only those pixel which undergoes a change of more than 150-pixel value is retained .rest of the pixels are set to 0. The difference image(C) is element-wise multiplied with b channel image(A), This amplifies the pixel value of pixels which undergoes max change.
+The contrast-enhanced image is converted to <a href="https://en.wikipedia.org/wiki/CIELAB_color_space" target="_blank">CIELAB color space.</a> The image is split into the corresponding channel(L* for the lightness and a* and b* for the green–red and blue-yellow color components). As the color of the track falls into blue-yellow region, We choose b channel image(A) and apply the __bitwise_not__ operation to obtain the inverse image(B). Now we subtract b channel image(A) from bit not image to obtain difference image(C), Only those pixel which undergoes a change of more than 150-pixel value is retained .rest of the pixels are set to 0. The difference image(C) is element-wise multiplied with b channel image(A), This amplifies the pixel value of pixels which undergoes max change.
 <table style="width:100%; border:0px;">
   <tr>
     <th>b channel image</th>
@@ -140,7 +140,7 @@ The contrast-enhanced image is converted to <a href="https://en.wikipedia.org/wi
 
 ### Dynamic Thresholding
 
-The implementation is inspired by this <a href="https://ieeexplore.ieee.org/document/6889285/" target="_blank">paper.</a> The image obtained from element-wise multiplication is applied dynamic thresholding to extract Lane pixel. Dynamic thresholding assumes that a vehicle runs in the middle of lanes. The image is divided in half along the width resulting in Dl(left half) and DR(right half) For both Dl and DR are scanned along the rows and max value in each row is obtained along with its position in the Row. For Dl the positional max value is selected as this resides closer to the middle of the lane, similarly, For DR the positional min value is selected.
+The implementation is inspired by this <a href="https://ieeexplore.ieee.org/document/6889285/" target="_blank">paper.</a> The image obtained from element-wise multiplication is applied dynamic thresholding to extract Lane pixel. Dynamic thresholding assumes that a vehicle runs in the middle of lanes. The image is divided in half along the width resulting in Dl(left half) and DR(right half), Both Dl and DR are scanned along the rows and max value in each row is obtained along with its position in the Row. For Dl the positional max value is selected which  resides closer to the middle of the lane, similarly, For DR the positional min value is selected which  resides closer to the middle of the lane.
 
 <table style="width:100%; border:0px;">
   <tr>
@@ -175,7 +175,7 @@ The implementation is inspired by this <a href="https://ieeexplore.ieee.org/docu
 </div>
 
 ### Detect lane pixels and fit to find the lane boundary
-The Image after dynamic thresholding is passed as an argument to ROI function which crops the image leaving out only lane pixel. The ROI image is then perspectively transformed to obtain Bird eye view. The histogram of the lower half of the image is used to get the range of the position of pixels in the image. Then dividing the entire image into n(current n=9) windows. Using the function Your image.nonzero() to get x, y coordinates of non zero pixels is determined. Now x and y coordinate of right and left lane pixels are determined.we use Curve fitting to obtain the polynomial.
+The Image after dynamic thresholding is passed as an argument to ROI function which crops the image leaving out only lane pixel. The ROI image is then perspectively transformed to obtain Bird eye view. The histogram of the lower half of the image is used to get the range of the position of pixels in the image. Then dividing the entire image into n(current n=9) windows. Using the function __image.nonzero()__  x, y coordinates of non zero pixels is determined. Now that x and y coordinate value  of right and left lane pixels are determined.we use Curve fitting to obtain the polynomial.
 <table style="width:100%; border:0px;">
   <tr>
     <th>ROI image</th>
