@@ -14,7 +14,7 @@ The first post <a href="https://karth1kkumark.github.io/Advance_lane_detection/"
 
 ### Streaming Images from Rpi to Laptop Through ROS
 
-Ros has built-in packages for image streaming and control of a robot, which we will be using in the future. I have installed ubuntu mate flavor of Ubiquity robotics available  <a href="https://downloads.ubiquityrobotics.com/pi.html" target="_blank">here</a>, which has ros pre-installed. The instruction for compiling and running raspicam_node is available <a href="https://github.com/UbiquityRobotics/raspicam_node" target="_blank">available here.</a>
+Ros has built-in packages for image streaming and control of a robot, which we will be using in the future. I have installed ubuntu mate flavor of Ubiquity robotics available  <a href="https://downloads.ubiquityrobotics.com/pi.html" target="_blank">here</a>, which has ros pre-installed. The instruction for compiling and running raspicam_node is <a href="https://github.com/UbiquityRobotics/raspicam_node" target="_blank">available here.</a>
 
 {% highlight python %}
 <launch>
